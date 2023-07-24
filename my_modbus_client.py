@@ -3,16 +3,16 @@ from pymodbus.client import ModbusTcpClient
 # Constants
 myServerAddr = '192.168.0.10'
 clickSw = {
-    'red':10001,
-    'yellow':10002,
-    'green':10003,
-    'blue':10004
+    'red':   10000,
+    'yellow':10001,
+    'green': 10002,
+    'blue':  10003
 }
 clickLed = {
-    'red':8192,
-    'yellow':8193,
-    'green':8194,
-    'blue':8195
+    'red':   0x2000,
+    'yellow':0x2001,
+    'green': 0x2002,
+    'blue':  0x2003
 }
 
 
@@ -30,11 +30,11 @@ if __name__ == '__main__':
     client.connect()
 
     # Write to LED switches
-    for select in clickLed:
-        client.write_coil(clickLed[select], False)
+    for select in clickSw:
+        client.write_coil(clickSw[select], False)
 
     Loopy = True
-    print('Press <Ctrl-C> to end')
+    print('Press <Ctrl-C> to end\n')
     while Loopy:
         try:
             # Read LED indicators
@@ -48,4 +48,4 @@ if __name__ == '__main__':
             Loopy = False
 
     client.close()
-    print('DONE')
+    print('\nDONE')
