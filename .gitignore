@@ -1,0 +1,6 @@
+# Python/Flask temp files
+__pycache__/*
+flask_session/*
+
+sources/*
+/__pycache__
