@@ -14,7 +14,7 @@ clickLed = {
     'green': 0x2002,
     'blue':  0x2003
 }
-
+scoreAddr = 0x0001
 
 if __name__ == '__main__':
     myState = {
@@ -23,29 +23,31 @@ if __name__ == '__main__':
         'green':False,
         'blue':False
     }
-    myLastState = myState.copy()
+    myScore = -1
 
     # Connect to modbus server
     client = ModbusTcpClient(myServerAddr)
     client.connect()
 
-    # Write to LED switches
-    for select in clickSw:
-        client.write_coil(clickSw[select], False)
+    if client.connected:
+        # Write to LED switches
+        for select in clickSw:
+            client.write_coil(clickSw[select], False)
 
-    Loopy = True
-    print('Press <Ctrl-C> to end\n')
-    while Loopy:
-        try:
-            # Read LED indicators
-            for select in clickLed:
-                result = client.read_coils(clickLed[select])
-                myState[select] = result.bits[0]
-                if myState[select] != myLastState[select]:
-                    print(f'{select}: {myState[select]}')
-                    myLastState[select] = myState[select]
-        except KeyboardInterrupt:
-            Loopy = False
-
-    client.close()
-    print('\nDONE')
+        Loopy = True
+        print('Press <Ctrl-C> to end\n')
+        print(f'{"Red":10s}{"Yellow":10s}{"Green":10s}{"Blue":10s}\t{"Score":5s}')
+        while Loopy is True:
+            try:
+                # Read LED indicators
+                for select in clickLed:
+                    myState[select] = client.read_coils(clickLed[select]).bits[0]
+                    if select == "red":
+                        print('\r',end='')
+                    print(f'{"ON" if myState[select] else " ":10s}', end='')
+                myScore = client.read_holding_registers(scoreAddr).registers[0]
+                print(f'\t{myScore:-5d}',end='')
+            except KeyboardInterrupt:
+                Loopy = False
+        client.close()
+        print('\nDONE')
