@@ -1,0 +1,331 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg width="25mm" height="25mm" viewBox="0 0 250 250" version="1.1" id="svg5" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg">
+            <defs>
+                <!-- #region Gradients -->
+                 <linearGradient id="grad-led-highlight"
+                    x1="0.00" y1="-10.00" x2="0.00" y2="-2.00"
+                    gradientUnits="userSpaceOnUse" >
+                    <stop offset="0.00" style="stop-color:#ffffff; stop-opacity:0.5" />
+                    <stop offset="1.00" style="stop-color:#ffffff; stop-opacity:0.0" />
+                </linearGradient>
+                <radialGradient id="grad-bezel"
+                    cx="-5" cy="-5" r="20"
+                    gradientUnits="userSpaceOnUse">
+                    <stop offset="0.70" style="stop-color:#454545;" />
+                    <stop offset="1.00" style="stop-color:#808080;" />
+                </radialGradient>
+                <linearGradient id="grad-bezel-round-shadow"
+                    x1="-10" y1="-10" x2="10" y2="10"
+                    gradientUnits="userSpaceOnUse" >
+                    <stop offset="0.00" style="stop-color:#3b3b3b; stop-opacity:0.9" />
+                    <stop offset="0.15" style="stop-color:#3b3b3b; stop-opacity:0.1" />
+                    <stop offset="0.85" style="stop-color:#3b3b3b; stop-opacity:0.1" />
+                    <stop offset="1.00" style="stop-color:#3b3b3b; stop-opacity:0.9" />
+                </linearGradient>
+                <linearGradient id="grad-bezel-round-highlight"
+                    x1="-10" y1="-10" x2="10" y2="10"
+                    gradientUnits="userSpaceOnUse" >
+                    <stop offset="0.00" style="stop-color:#d3d3d3; stop-opacity:0.9" />
+                    <stop offset="0.10" style="stop-color:#d3d3d3; stop-opacity:0.1" />
+                    <stop offset="0.85" style="stop-color:#d3d3d3; stop-opacity:0.1" />
+                    <stop offset="1.00" style="stop-color:#d3d3d3; stop-opacity:0.9" />
+                </linearGradient>
+                <linearGradient id="grad-bezel-square-highlight-mask"
+                    x1="-10" y1="-10" x2="10" y2="10"
+                    gradientUnits="userSpaceOnUse" >
+                    <stop offset="0.25" style="stop-color:white" />
+                    <stop offset="0.50" style="stop-color:black" />
+                </linearGradient>
+                <linearGradient id="grad-bezel-square-shadow-mask"
+                    x1="-10" y1="-10" x2="10" y2="10"
+                    gradientUnits="userSpaceOnUse" >
+                    <stop offset="0.50" style="stop-color:black" />
+                    <stop offset="0.75" style="stop-color:white" />
+                </linearGradient>
+                <!-- #region LED Colors -->
+                <radialGradient id="grad-led_off-red"
+                    cx="-3" cy="-5" r="15"
+                    gradientUnits="userSpaceOnUse" >
+                    <stop offset="0.00" style="stop-color:#af0000" />
+                    <stop offset="1.00" style="stop-color:#2b0000" />
+                </radialGradient>
+                <radialGradient id="grad-led_off-orange"
+                    cx="-3" cy="-5" r="15"
+                    gradientUnits="userSpaceOnUse" >
+                    <stop offset="0.00" style="stop-color:#cf7500" />
+                    <stop offset="1.00" style="stop-color:#380700" />
+                </radialGradient>
+                <radialGradient id="grad-led_off-yellow"
+                    cx="-3" cy="-5" r="15"
+                    gradientUnits="userSpaceOnUse" >
+                    <stop offset="0.00" style="stop-color:#c5b500" />
+                    <stop offset="1.00" style="stop-color:#201500" />
+                </radialGradient>
+                <radialGradient id="grad-led_off-green"
+                    cx="-3" cy="-5" r="15"
+                    gradientUnits="userSpaceOnUse" >
+                    <stop offset="0.00" style="stop-color:#00a000" />
+                    <stop offset="1.00" style="stop-color:#001b00" />
+                </radialGradient>
+                <radialGradient id="grad-led_off-cyan"
+                    cx="-3" cy="-5" r="15"
+                    gradientUnits="userSpaceOnUse" >
+                    <stop offset="0.00" style="stop-color:#007066" />
+                    <stop offset="1.00" style="stop-color:#001a1a" />
+                </radialGradient>
+                <radialGradient id="grad-led_off-blue"
+                    cx="-3" cy="-5" r="15"
+                    gradientUnits="userSpaceOnUse" >
+                    <stop offset="0.00" style="stop-color:#00008a" />
+                    <stop offset="1.00" style="stop-color:#000005" />
+                </radialGradient>
+                <radialGradient id="grad-led_off-violet"
+                    cx="-3" cy="-5" r="15"
+                    gradientUnits="userSpaceOnUse" >
+                    <stop offset="0.00" style="stop-color:#440065" />
+                    <stop offset="1.00" style="stop-color:#100022" />
+                </radialGradient>
+                <radialGradient id="grad-led_on-red"
+                    cx="0" cy="0" r="18"
+                    gradientUnits="userSpaceOnUse" >
+                    <stop offset="0.43" style="stop-color:#e40000; stop-opacity:1.00" />
+                    <stop offset="1.00" style="stop-color:#ff0000; stop-opacity:0.00" />
+                </radialGradient>
+                <radialGradient id="grad-led_on-orange"
+                    cx="0" cy="0" r="18"
+                    gradientUnits="userSpaceOnUse" >
+                    <stop offset="0.43" style="stop-color:#ffa500; stop-opacity:1.00" />
+                    <stop offset="1.00" style="stop-color:#cf8500; stop-opacity:0.00" />
+                </radialGradient>
+                <radialGradient id="grad-led_on-yellow"
+                    cx="0" cy="0" r="18"
+                    gradientUnits="userSpaceOnUse" >
+                    <stop offset="0.43" style="stop-color:#fff200; stop-opacity:1.00" />
+                    <stop offset="1.00" style="stop-color:#e4cc00; stop-opacity:0.00" />
+                </radialGradient>
+                <radialGradient id="grad-led_on-green"
+                    cx="0" cy="0" r="18"
+                    gradientUnits="userSpaceOnUse" >
+                    <stop offset="0.43" style="stop-color:#00e400; stop-opacity:1.00" />
+                    <stop offset="1.00" style="stop-color:#00ff00; stop-opacity:0.00" />
+                </radialGradient>
+                <radialGradient id="grad-led_on-cyan"
+                    cx="0" cy="0" r="18"
+                    gradientUnits="userSpaceOnUse" >
+                    <stop offset="0.43" style="stop-color:#00d3e4; stop-opacity:1.00" />
+                    <stop offset="1.00" style="stop-color:#00d3ff; stop-opacity:0.00" />
+                </radialGradient>
+                <radialGradient id="grad-led_on-blue"
+                    cx="0" cy="0" r="18"
+                    gradientUnits="userSpaceOnUse" >
+                    <stop offset="0.43" style="stop-color:#0050e4; stop-opacity:1.00" />
+                    <stop offset="1.00" style="stop-color:#0050ff; stop-opacity:0.00" />
+                </radialGradient>
+                <radialGradient id="grad-led_on-violet"
+                    cx="0" cy="0" r="18"
+                    gradientUnits="userSpaceOnUse" >
+                    <stop offset="0.43" style="stop-color:#9c50cc; stop-opacity:1.00" />
+                    <stop offset="1.00" style="stop-color:#6200a2; stop-opacity:0.00" />
+                </radialGradient>
+                <!-- #endregion -->
+                <!-- #endregion -->
+                <!-- #region Masks -->
+                <mask id="mask-bezel-round">
+                    <circle style="fill:white;" r="14" />
+                    <circle style="fill:black;" r="12" />
+                </mask>
+                <mask id="mask-bezel-round-highlight">
+                    <circle style="fill:white;" cx="-0.2" cy="-0.2" r="14.5" />
+                    <circle style="fill:black;" cx="0.5" cy="0.5" r="14.2" />
+                    <circle style="fill:white;" cx="0.4" cy="0.4" r="12.2" />
+                    <circle style="fill:black;" cx="0.0" cy="0.0" r="12.0" />
+                </mask>
+                <mask id="mask-bezel-round-shadow">
+                    <circle style="fill:white;" cx="0.2" cy="0.2" r="14.5" />
+                    <circle style="fill:black;" cx="-0.5" cy="-0.5" r="14.2" />
+                    <circle style="fill:white;" cx="-0.4" cy="-0.4" r="12.2" />
+                    <circle style="fill:black;" cx="-0.0" cy="-0.0" r="12.0" />
+                </mask>
+                <mask id="mask-bezel-square">
+                    <rect style="fill:white;" x="-15" y="-15" width="30" height="30"/>
+                    <rect style="fill:black;" x="-10.95" y="-10.95" width="21.9" height="21.9" rx="3" />
+                </mask>
+                <mask id="mask-bezel-square-highlight">
+                    <polygon style="fill:url(#grad-bezel-square-highlight-mask);" points="-14,13.5 -14,-14 13.5,-14" />
+                    <rect style="fill:black;" x="-11.5" y="-11.5" width="23" height="23" rx="3" />
+                </mask>
+                <mask id="mask-bezel-square-shadow">
+                    <polygon style="fill:url(#grad-bezel-square-shadow-mask);" points="-13.5,14 14,14 14,-13.5" />
+                    <rect style="fill:black;" x="-11.5" y="-11.5" width="23" height="23" rx="3" />
+                </mask>
+                <!-- #endregion -->
+                <g id="led-round-base">
+                    <circle r="13" />
+                    <circle style="fill:url(#grad-bezel);" r="14" mask="url(#mask-bezel-round)" />
+                    <circle style="fill:url(#grad-bezel-round-shadow);" r="14" mask="url(#mask-bezel-round-shadow)" />
+                    <circle style="fill:url(#grad-bezel-round-highlight);" r="14" mask="url(#mask-bezel-round-highlight)" />
+                </g>
+                <g id="led-square-base">
+                    <rect x="-11" y="-11" width="22" height="22" rx="3" />
+                    <rect x="-13" y="-13" width="26" height="26" rx="4"
+                        style="fill:url(#grad-bezel);" mask="url(#mask-bezel-square)" />
+                    <rect x="-13" y="-13" width="26" height="26" rx="4"
+                        style="fill:black;opacity:30%;" mask="url(#mask-bezel-square-shadow)" />
+                    <rect x="-13" y="-13" width="26" height="26" rx="4"
+                        style="fill:white;opacity:30%;" mask="url(#mask-bezel-square-highlight)" />
+                </g>
+                <path id="led-round-highlight" style="fill:url(#grad-led-highlight);"
+                   d="m -0.085,-11.27 c -3.71,0 -7.88,2.12 -9.7,5.76 -4.17,8.36 23.11,8.41 19.3,0 -1.62,-3.56 -5.91,-5.76 -9.6,-5.76 z" />
+                <rect id="led-square-highlight" style="fill:url(#grad-led-highlight);"
+                    x="-10.5" y="-10.5" width="21" height="30" rx="3" />
+                <circle id="led-glow" cx="0.0" cy="0.0" r="20" />
+            </defs>
+            <!-- #region Icon Set -->
+            <!-- Round LEDs "OFF" -->
+            <g transform="translate(20,20)">
+                <use xlink:href="#led-round-base" style="fill:url(#grad-led_off-red);" />
+                <use xlink:href="#led-round-highlight" />
+            </g>
+            <g transform="translate(55,20)">
+                <use xlink:href="#led-round-base" style="fill:url(#grad-led_off-orange);" />
+                <use xlink:href="#led-round-highlight" />
+            </g>
+            <g transform="translate(90,20)">
+                <use xlink:href="#led-round-base" style="fill:url(#grad-led_off-yellow);" />
+                <use xlink:href="#led-round-highlight" />
+            </g>
+            <g transform="translate(125,20)">
+                <use xlink:href="#led-round-base" style="fill:url(#grad-led_off-green);" />
+                <use xlink:href="#led-round-highlight" />
+            </g>
+            <g transform="translate(160,20)">
+                <use xlink:href="#led-round-base" style="fill:url(#grad-led_off-cyan);" />
+                <use xlink:href="#led-round-highlight" />
+            </g>
+            <g transform="translate(195,20)">
+                <use xlink:href="#led-round-base" style="fill:url(#grad-led_off-blue);" />
+                <use xlink:href="#led-round-highlight" />
+            </g>
+            <g transform="translate(230,20)">
+                <use xlink:href="#led-round-base" style="fill:url(#grad-led_off-violet);" />
+                <use xlink:href="#led-round-highlight" />
+            </g>
+            <!-- Round LEDs "ON" -->
+            <g transform="translate(20,60)">
+                <use xlink:href="#led-round-base" style="fill:url(#grad-led_off-red);" />
+                <use xlink:href="#led-glow" style="fill:url(#grad-led_on-red);" />
+                <use xlink:href="#led-round-highlight" />
+            </g>
+            <g transform="translate(55,60)">
+                <use xlink:href="#led-round-base" style="fill:url(#grad-led_off-orange);" />
+                <use xlink:href="#led-glow" style="fill:url(#grad-led_on-orange);" />
+                <use xlink:href="#led-round-highlight" />
+            </g>
+            <g  transform="translate(90,60)">
+                <use xlink:href="#led-round-base" style="fill:url(#grad-led_off-yellow);" />
+                <use xlink:href="#led-glow" style="fill:url(#grad-led_on-yellow);" />
+                <use xlink:href="#led-round-highlight" />
+            </g>
+            <g transform="translate(125,60)">
+                <use xlink:href="#led-round-base" style="fill:url(#grad-led_off-green);" />
+                <use xlink:href="#led-glow" style="fill:url(#grad-led_on-green);" />
+                <use xlink:href="#led-round-highlight" />
+            </g>
+            <g transform="translate(160,60)">
+                <use xlink:href="#led-round-base" style="fill:url(#grad-led_off-cyan);" />
+                <use xlink:href="#led-glow" style="fill:url(#grad-led_on-cyan);" />
+                <use xlink:href="#led-round-highlight" />
+            </g>
+            <g transform="translate(195,60)">
+                <use xlink:href="#led-round-base" style="fill:url(#grad-led_off-blue);" />
+                <use xlink:href="#led-glow" style="fill:url(#grad-led_on-blue);" />
+                <use xlink:href="#led-round-highlight" />
+            </g>
+            <g transform="translate(230,60)">
+                <use xlink:href="#led-round-base" style="fill:url(#grad-led_off-violet);" />
+                <use xlink:href="#led-glow" style="fill:url(#grad-led_on-violet);" />
+                <use xlink:href="#led-round-highlight" />
+            </g>
+            <!-- Square LEDs "OFF" -->
+            <g transform="translate(20,100)">
+                <use xlink:href="#led-square-base" style="fill:url(#grad-led_off-red);" />
+                <use xlink:href="#led-square-highlight" />
+            </g>
+            <g transform="translate(55,100)">
+                <use xlink:href="#led-square-base" style="fill:url(#grad-led_off-orange);" />
+                <use xlink:href="#led-square-highlight" />
+            </g>
+            <g transform="translate(90,100)">
+                <use xlink:href="#led-square-base" style="fill:url(#grad-led_off-yellow);" />
+                <use xlink:href="#led-square-highlight" />
+            </g>
+            <g transform="translate(125,100)">
+                <use xlink:href="#led-square-base" style="fill:url(#grad-led_off-green);" />
+                <use xlink:href="#led-square-highlight" />
+            </g>
+            <g transform="translate(160,100)">
+                <use xlink:href="#led-square-base" style="fill:url(#grad-led_off-cyan);" />
+                <use xlink:href="#led-square-highlight" />
+            </g>
+            <g transform="translate(195,100)">
+                <use xlink:href="#led-square-base" style="fill:url(#grad-led_off-blue);" />
+                <use xlink:href="#led-square-highlight" />
+            </g>
+            <g transform="translate(230,100)">
+                <use xlink:href="#led-square-base" style="fill:url(#grad-led_off-violet);" />
+                <use xlink:href="#led-square-highlight" />
+            </g>
+            <!-- Square LEDs "ON" -->
+            <g transform="translate(20,140)">
+                <use xlink:href="#led-square-base" style="fill:url(#grad-led_off-red);" />
+                <use xlink:href="#led-glow" style="fill:url(#grad-led_on-red);" />
+                <use xlink:href="#led-square-highlight" />
+            </g>
+            <g transform="translate(55,140)">
+                <use xlink:href="#led-square-base" style="fill:url(#grad-led_off-orange);" />
+                <use xlink:href="#led-glow" style="fill:url(#grad-led_on-orange);" />
+                <use xlink:href="#led-square-highlight" />
+            </g>
+            <g transform="translate(90,140)">
+                <use xlink:href="#led-square-base" style="fill:url(#grad-led_off-yellow);" />
+                <use xlink:href="#led-glow" style="fill:url(#grad-led_on-yellow);" />
+                <use xlink:href="#led-square-highlight" />
+            </g>
+            <g transform="translate(125,140)">
+                <use xlink:href="#led-square-base" style="fill:url(#grad-led_off-green);" />
+                <use xlink:href="#led-glow" style="fill:url(#grad-led_on-green);" />
+                <use xlink:href="#led-square-highlight" />
+            </g>
+            <g transform="translate(160,140)">
+                <use xlink:href="#led-square-base" style="fill:url(#grad-led_off-cyan);" />
+                <use xlink:href="#led-glow" style="fill:url(#grad-led_on-cyan);" />
+                <use xlink:href="#led-square-highlight" />
+            </g>
+            <g transform="translate(195,140)">
+                <use xlink:href="#led-square-base" style="fill:url(#grad-led_off-blue);" />
+                <use xlink:href="#led-glow" style="fill:url(#grad-led_on-blue);" />
+                <use xlink:href="#led-square-highlight" />
+            </g>
+            <g transform="translate(230,140)">
+                <use xlink:href="#led-square-base" style="fill:url(#grad-led_off-violet);" />
+                <use xlink:href="#led-glow" style="fill:url(#grad-led_on-violet);" />
+                <use xlink:href="#led-square-highlight" />
+            </g>
+            <!-- #endregion -->
+            <!-- #region views-->
+            <view id="led-round-red-off" viewBox="0 0 40 40" />
+            <view id="led-round-orange-off" viewBox="40 0 40 40" />
+            <view id="led-round-yellow-off" viewBox="80 0 40 40" />
+            <view id="led-round-green-off" viewBox="120 0 40 40" />
+            <view id="led-round-blue-off" viewBox="160 0 40 40" />
+            <view id="led-round-violet-off" viewBox="200 0 40 40" />
+            <view id="led-round-red-on" viewBox="0 40 40 40" />
+            <view id="led-round-orange-on" viewBox="40 40 40 40" />
+            <view id="led-round-yellow-on" viewBox="80 40 40 40" />
+            <view id="led-round-green-on" viewBox="120 40 40 40" />
+            <view id="led-round-blue-on" viewBox="160 40 40 40" />
+            <view id="led-round-violet-on" viewBox="200 40 40 40" />
+            <!-- #endregion -->
+</svg>

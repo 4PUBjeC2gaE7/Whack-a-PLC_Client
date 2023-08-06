@@ -1,0 +1,60 @@
+{% macro myName() -%}
+<span class="myUserName">{{ name }}</span>
+{%- endmacro %}
+
+<!DOCTYPE html>
+  
+<html lang="en">
+    <head>
+        <meta name="viewport" content="initial-scale=1, width=device-width">
+        <link rel="stylesheet" href='/static/styles.css' />
+        {% block head %}
+        {% endblock %}
+        <title>Mathleships!</title>
+        <script>
+            function postUsername()
+            {
+                let myName = document.querySelector('#Username').textContent;
+                let request = new XMLHttpRequest();
+
+                let ans = prompt("Please enter a username:", myName);
+                if (ans == "" || ans == myName) { return; }
+
+                request.onload = function ()
+                {
+                    if(request.status == 200)
+                    {
+                        setUsername(request.responseText);
+                    }
+                }
+
+                request.open('POST', '/name', true);
+                request.setRequestHeader("Content-Type", "text/plain;charset=UTF-8");
+                request.send(ans);
+            }
+
+            function setUsername(name) {
+                let userNames = document.querySelectorAll('.myUserName');
+                userNames.forEach(
+                    function (currentValue) { currentValue.textContent = name; }
+                );
+            }
+
+        </script>
+    </head>
+    <body>
+        <div id="nav">
+            <h1>Mathleships</h1>
+            <div class="float-left">
+                <p>Username:</p>
+                <h2 id="Username" class="myUserName" onclick="postUsername()">{{ name }}</h2>
+            </div>
+            <div class="float-right">
+                <p>Game Code:</p>
+                <h2 id="Gamecode">{{ gameCode }}</h2>
+            </div>
+        </div>
+        {% block main %}
+        {% endblock %}
+    </body>
+</html>
