@@ -1,0 +1,128 @@
+:root {
+    --bg-main: #454b51;
+    --bg-alt: #4e5a67;
+    --bg-light: #a1b9d2;
+    --bg-dark: #282f36;
+    --border: #66666b;
+    --shadow: #182028;
+    --text-main: #2c3135;
+    --text-highlight: #dcf358;
+}
+
+#nav, .block {
+    background-color: var(--bg-main);
+    background-image: linear-gradient(
+        var(--bg-dark) 0%,
+        var(--bg-main) 10%,
+        var(--bg-main) 95%,
+        var(--bg-alt) 100%
+    );
+    background-repeat: no-repeat;
+}
+
+#nav {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    padding: 0.2em 1em;
+    border-bottom: 4px solid var(--border);
+}
+
+#nav p {
+    font-family: "Arial Narrow", sans-serif;
+    font-size: 10pt;
+    padding: 0;
+    margin: 0;
+}
+
+#nav h2 {
+    margin-top: 0;
+}
+
+.center {
+    margin: auto;
+}
+
+.block {
+    display: block;
+    border: 4px inset var(--border);
+    border-radius: 10px;
+    width: 40%;
+    min-width: fit-content;
+    padding: 2em;
+    margin-top: 3vh;
+    margin-bottom: 3vh;
+}
+
+h1, h2, h3, h4, h5 {
+    color: var(--text-highlight);
+    text-shadow: var(--shadow) 2px 1px 4px;
+}
+
+.block h1, .block h2, .block h3 {
+    text-align: center;
+    padding: 0.5em;
+}
+
+.block>* {
+    margin: 0.5em;
+}
+
+body {
+    background-color: var(--bg-light);
+    padding: 18vh 10% 0px 10%;
+}
+
+h1, h2, h3, label {
+    font-family: "Eras Bold ITC", "Arial Black", sans-serif;
+    user-select: none;
+}
+
+.float-left {
+    float: left;
+    margin-left: 2em;
+}
+
+.float-right {
+    float: right;
+    margin-right: 2em;
+}
+
+form {
+  display: grid;
+  column-gap: 1em;
+  row-gap: 5px;
+  grid-template-columns: 1fr 1fr;
+}
+
+input, select {
+    border-radius: 10px;
+    margin-bottom: 15px;
+    padding: 10px 8px;
+    font-size: 18px;
+    font-weight: 500;
+    text-transform: uppercase;
+}
+
+input[type=text], select {
+    background-color: var(--bg-dark);
+    border: 1px solid var(--border);
+    color: var(--text-highlight);
+}
+
+input[type=submit] {
+    font-weight: 800;
+    margin: auto;
+    width: 80%;
+}
+
+/* The container */
+label {
+    display: block;
+    position: relative;
+    padding: 0.5em 3em;
+    cursor: pointer;
+    font-size: 12pt;
+    height: 4em;
+}

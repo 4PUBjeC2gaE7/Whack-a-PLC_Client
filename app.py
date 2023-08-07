@@ -15,19 +15,22 @@ Session(app)
 
 @app.route("/", methods=["GET","POST"])
 def route_index():
-    if request.method == "POST":
-        # parse join/new game
-        myMode = request.form.get("mode")
-        if myMode == "monitor":
-            return redirect(url_for('route_mon'))
-        elif myMode == "control":
-            return redirect(url_for('route_ctrl'))
-        elif myMode == "advance":
-            return redirect(url_for('route_adv'))
-        else:
-            return redirect(url_for('route_index'), code=303)
-    else:
-        return redirect(url_for('route_index'), code=404)
+    match request.method:
+        case "POST":
+            # parse join/new game
+            match request.form.get("mode"):
+                case "monitor":
+                    return redirect(url_for('route_mon'))
+                case "control":
+                    return redirect(url_for('route_ctrl'))
+                case "advance":
+                    return redirect(url_for('route_adv'))
+                case _:
+                    return redirect(url_for('route_index'), code=303)
+        case "GET":
+            return render_template("index.html")
+        case _:
+            return redirect(url_for('route_index'), code=404)
 
 @app.route("/monitor", methods=["GET"])
 def route_mon():
@@ -35,14 +38,20 @@ def route_mon():
 
 @app.route("/control", methods=["GET","POST"])
 def route_ctrl():
-    if request.method == "POST":
-        pass    #TODO
-    else:
-        return redirect(url_for('route_index'), code=404)
+    match request.method:
+        case "POST":
+            pass    #TODO
+        case "GET":
+            pass    #TODO
+        case _:
+            return redirect(url_for('route_index'), code=404)
 
 @app.route("/advance", methods=["GET","POST"])
 def route_adv():
-    if request.method == "POST":
-        pass    #TODO
-    else:
-        return redirect(url_for('route_index'), code=404)
+    match request.method:
+        case "POST":
+            pass    #TODO
+        case "GET":
+            pass    #TODO
+        case _:
+            return redirect(url_for('route_index'), code=404)

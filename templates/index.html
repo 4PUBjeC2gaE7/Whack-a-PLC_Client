@@ -1,37 +1,24 @@
 {% extends 'base.html' %}
 
-{% block head %}
-<script>
-    function selectJoin() {
-        document.querySelector("#join").setAttribute("checked","checked");
-    }
-</script>
-{% endblock %}
-
 {% block main %}
-<p>Welcome, {{ myName() }}, to Mathleships, the grid-fire game to practice your math skills.</p>
+<p>Welcome to Whack-a-PLC. This game demonstrates functionality of the
+    <a href="https://pymodbus.readthedocs.io/">pyModbus</a> interface and a basic 
+    <a href="https://flask.palletsprojects.com/en/2.2.x/">Flask</a> server stack.
+    The application has five routes which align with the access modes, plus this log-on screen.
+</p>
 <div class="center block">
+    <h2>Let's Play</h2>
     <form action="/" method="post">
-        <h2>Let's Play</h2>
-        <label>
-            <input type="radio" id="join" name="mode" value="join" />Join Game:
-            <span class="checkmark"></span>
-            <input type="text" name="game" list="codes" placeholder="Game Code" onfocus="selectJoin()"/>
-        </label>
-        <br />
-        <label>
-            <input type="radio" name="mode" value="new" checked="checked"/>New Game
-            <span class="checkmark"></span>
-        </label>
-        <br />
-        <input type="submit" value="Submit"/>
+        <label>Username:</label>
+        <input type="text" name="user" placeholder="New User" />
+        <label>Access:</label>
+        <select name="access">
+            <option value="">Mode</option>
+            <option value="monitor">Monitor</option>
+            <option value="control">Control</option>
+            <option value="advanced">Advanced Control</option>
+        </select>
+        <input type="submit" value="Begin"/>
     </form>
 </div>
-
-<datalist id="codes">
-{% for code in gameCodes -%}
-<option value="{{ code }}" />
-{%- endfor %}
-</datalist>
-
 {% endblock %}

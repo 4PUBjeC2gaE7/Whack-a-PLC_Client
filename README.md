@@ -1,4 +1,5 @@
 # Modbus TCP Client
+
 ## Description
 The Modbus TCP client monitors the state of a <abbr title="Programmable Logic Controller">PLC</abbr> and presenting that state through a Flask Web server.
 ---
@@ -6,6 +7,7 @@ The Modbus TCP client monitors the state of a <abbr title="Programmable Logic Co
 ## Table of Contents
 - [Description](#description)
 - [Design](#design)
+- [Running](#running)
 ---
 
 ## Design
@@ -29,3 +31,18 @@ flowchart TB
     select --high-level--> ctrl1;
     select --advance--> ctrl2;
 ```
+---
+
+## Running
+1. Start a docker container from a *modbus-tcp* image:
+
+    ```bash
+    $ docker run -v /C/Code/modbus_tcp_client:/srv -p 127.0.0.1:8081:5000 -it modbus-tcp
+    ```
+
+2. From the container terminal start the flask server:
+
+    ```bash
+    $ cd /srv
+    $ flask run --debug -h 0.0.0.0
+    ```
