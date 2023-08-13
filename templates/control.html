@@ -3,15 +3,28 @@
 {% block head %}
 {{ super() }}
 <script>
-  function resetScore() {
-    const request = new Request("/control", { method: "POST", body: '{"select": ["score"]}' });
+  function sendCommand(e)
+  {
+    let caller = e.target;
+    if(caller.id == "")
+    {
+      caller = caller.parentElement;
+    }
+    let myBody = '{"select": ["' + caller.id + '"]}';
+    let request = new Request("/control", { method: "POST", body: myBody });
     fetch(request);
   }
 
   function addClicks(e)
   {
-    let myReset = document.querySelector('#reset');
-    myReset.addEventListener("click", resetScore);
+    let myButtons = document.querySelectorAll('.clickable');
+    myButtons.forEach(
+      function (button)
+      {
+          button.addEventListener("click", sendCommand);
+      }
+    );
+    
   }
 </script>
 {% endblock %}
@@ -20,13 +33,13 @@
 <div class="center block">
     <div class="form">
     <h2>Score: <span id="score">0</span></h2>
-    <button id="reset" type="button">Reset</button>
+    <button id="reset" class="clickable" type="button">Reset</button>
     </div>
     <div id="buttons" class="wrapper">
-      <div id="red" class="indicator square red"><h3 class="label">01</h3></div>
-      <div id="yellow" class="indicator square green"><h3 class="label">02</h3></div>
-      <div id="green" class="indicator square yellow"><h3 class="label">03</h3></div>
-      <div id="blue" class="indicator square blue"><h3 class="label">04</h3></div>
+      <div id="red" class="indicator clickable square red"><h3 class="label">01</h3></div>
+      <div id="green" class="indicator clickable square green"><h3 class="label">02</h3></div>
+      <div id="yellow" class="indicator clickable square yellow"><h3 class="label">03</h3></div>
+      <div id="blue" class="indicator clickable square blue"><h3 class="label">04</h3></div>
     </div>
 </div>
 <script>

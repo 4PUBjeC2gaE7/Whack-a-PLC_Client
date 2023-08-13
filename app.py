@@ -13,15 +13,15 @@ import json
 # Constants
 myServerAddr = '192.168.0.10'
 clickSw = {
-    'red':   10000,
-    'yellow':10002,
-    'green': 10001,
-    'blue':  10003
+    'red':   0x400A,
+    'yellow':0x400B,
+    'green': 0x400C,
+    'blue':  0x400D
 }
 clickLed = {
     'red':   0x2000,
-    'yellow':0x2002,
-    'green': 0x2001,
+    'yellow':0x2001,
+    'green': 0x2002,
     'blue':  0x2003
 }
 scoreAddr = 0x0001
@@ -110,14 +110,14 @@ def route_ctrl():
             # print(f'\n\n{request.data.decode()}\n')
             mySuccess = False
             myPost = json.loads(request.data.decode())['select']
-            print(myPost)
+            # print(myPost)
             for select in myPost:
                 match select:
-                    case "score":
+                    case "reset":
                         client.write_register(scoreAddr,0)
                         mySuccess = True
-                    case ["red"|"yellow"|"green"|"blue"]:
-                        client.write_coil(clickSw[select], False)
+                    case "red"|"yellow"|"green"|"blue":
+                        client.write_coil(clickSw[select], True)
                         mySuccess = True
             if mySuccess:
                 return json.dumps({'success':True}), 200, {'ContentType':'application/json'}
