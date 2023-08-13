@@ -3,28 +3,57 @@
 {% block head %}
 {{ super() }}
 <script>
-  function sendCommand(e)
+  function sendCommand(select)
+  {
+    let myBody = '{"select": ["' + select + '"]}';
+    let request = new Request("/control", { method: "POST", body: myBody });
+    fetch(request);
+  }
+
+  function handleClick(e)
   {
     let caller = e.target;
     if(caller.id == "")
     {
       caller = caller.parentElement;
     }
-    let myBody = '{"select": ["' + caller.id + '"]}';
-    let request = new Request("/control", { method: "POST", body: myBody });
-    fetch(request);
+    sendCommand(caller.id);
   }
 
-  function addClicks(e)
+  function handleKey(e)
   {
+    switch(e.key)
+    {
+      case "1":
+        mySelect = "red";
+        break;
+      case "2":
+        mySelect = "green";
+        break;
+      case "3":
+        mySelect = "yellow";
+        break;
+      case "4":
+        mySelect = "blue";
+        break;
+      default:
+        return;
+    }
+    sendCommand(mySelect);
+  }
+
+  function addListeners(e)
+  {
+    // add button listeners
     let myButtons = document.querySelectorAll('.clickable');
     myButtons.forEach(
       function (button)
       {
-          button.addEventListener("click", sendCommand);
+          button.addEventListener("click", handleClick);
       }
     );
-    
+    // add keyboard listener
+    document.addEventListener("keydown", handleKey);
   }
 </script>
 {% endblock %}
@@ -43,6 +72,6 @@
     </div>
 </div>
 <script>
-  document.addEventListener("DOMContentLoaded", addClicks);
+  document.addEventListener("DOMContentLoaded", addListeners);
 </script>
 {% endblock %}
