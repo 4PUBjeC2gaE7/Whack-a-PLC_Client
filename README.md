@@ -44,5 +44,5 @@ flowchart TB
 
     ```bash
     $ cd /srv
-    $ flask run --debug -h 0.0.0.0
+    $ flask --debug run -h 0.0.0.0
     ```
