@@ -82,8 +82,8 @@ def route_index():
                     return redirect(url_for('route_index'), code=303)
         case "GET":
             return render_template('index.html')
-        case _:
-            return redirect(url_for('route_index'), code=404)
+    # fail-through
+    return redirect(url_for('route_index'), code=404)
 
 @app.route("/data-stream", methods=["GET"])
 def route_data():
@@ -91,12 +91,9 @@ def route_data():
         def event_stream():
             laststate = stream.state.copy()
             while True:
-            #    yield f'data: {json.dumps(stream.state)}\n\n'
                 if laststate != stream.state:
                     laststate = stream.state.copy()
-                    # yield f'{json.dumps(stream.state)}\n\n'
                     yield f'data: {json.dumps(stream.state)}\n\n'
-                    # yield "here\n\nthere\n\n"
                 time.sleep(0.1)
         return Response(event_stream(), content_type='text/event-stream')
     # fail-through
@@ -105,17 +102,29 @@ def route_data():
 @app.route("/monitor", methods=["GET"])
 def route_mon():
     return render_template('monitor.html')
-    # return redirect(url_for('route_index'), code=404)
 
 @app.route("/control", methods=["GET","POST"])
 def route_ctrl():
     match request.method:
         case "POST":
-            pass    #TODO
+            # print(f'\n\n{request.data.decode()}\n')
+            mySuccess = False
+            myPost = json.loads(request.data.decode())['select']
+            print(myPost)
+            for select in myPost:
+                match select:
+                    case "score":
+                        client.write_register(scoreAddr,0)
+                        mySuccess = True
+                    case ["red"|"yellow"|"green"|"blue"]:
+                        client.write_coil(clickSw[select], False)
+                        mySuccess = True
+            if mySuccess:
+                return json.dumps({'success':True}), 200, {'ContentType':'application/json'}
         case "GET":
-            pass    #TODO
-        case _:
-            return redirect(url_for('route_index'), code=404)
+            return render_template('control.html')
+    # fail-through
+    return redirect(url_for('route_index'), code=404)
 
 @app.route("/advance", methods=["GET","POST"])
 def route_adv():
@@ -124,8 +133,8 @@ def route_adv():
             pass    #TODO
         case "GET":
             pass    #TODO
-        case _:
-            return redirect(url_for('route_index'), code=404)
+    # fail-through
+    return redirect(url_for('route_index'), code=404)
 
 @app.route("/favicon", methods=["GET"])
 def route_favicon():
