@@ -1,6 +1,7 @@
 from __future__ import division
 from flask import Flask, Response, render_template, request, redirect, send_from_directory, url_for, session, abort
 from flask_session import Session
+from pymodbus.client import ModbusTcpClient
 from enum import Enum
 from random import randrange, choice
 from os import path
@@ -9,11 +10,29 @@ import threading
 import time
 import json
 
+# Constants
+myServerAddr = '192.168.0.10'
+clickSw = {
+    'red':   10000,
+    'yellow':10002,
+    'green': 10001,
+    'blue':  10003
+}
+clickLed = {
+    'red':   0x2000,
+    'yellow':0x2002,
+    'green': 0x2001,
+    'blue':  0x2003
+}
+scoreAddr = 0x0001
+
 # Configure app
 app = Flask(__name__)
-app.debug = True
 
-#region Test
+# Connect to modbus server
+client = ModbusTcpClient(myServerAddr)
+client.connect()
+
 # Generate streaming data and calculate statistics from it
 class MyStreamMonitor(object):
     def __init__(self):
@@ -25,19 +44,20 @@ class MyStreamMonitor(object):
             'score':-1
         }
     
-    @property
-    def generate_values(self):
-        while True:
-            time.sleep(.5)  # an artificial delay
-            yield choice(['red','yellow','green','blue'])
     def monitor(self, report_interval=1):
         print('Starting data stream...')
-        for x in self.generate_values:
-            if x != 'skip':
-                self.state[x] = not self.state[x] 
-                if not self.state[x]:
-                    self.state['score'] += 1 
-#endregion
+        if client.connected:
+            Loopy = True
+            while Loopy is True:
+                time.sleep(.1)  # an artificial delay
+                try:
+                    # Read LED indicators
+                    for select in clickLed:
+                        self.state[select] = client.read_coils(clickLed[select]).bits[0]
+                    self.state['score'] = client.read_holding_registers(scoreAddr).registers[0]
+                except KeyboardInterrupt:
+                    Loopy = False
+            client.close()
 
 stream = MyStreamMonitor()
 
