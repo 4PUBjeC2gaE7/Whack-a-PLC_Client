@@ -2,12 +2,25 @@
 
 {% block head %}
 <link rel="stylesheet" href="/static/LED.css" />
-<script src="http://code.jquery.com/jquery-latest.js"></script>
+<!-- <script src="http://code.jquery.com/jquery-latest.js"></script> -->
 <script>
 if (!!window.EventSource) {
-  var source = new EventSource('/monitor');
+  var source = new EventSource('/data-stream');
   source.onmessage = function(e) {
-    $("#data").text(e.data);
+    myData = JSON.parse(e.data);
+    document.getElementById("score").innerText = myData.score;
+    let myButtons = document.querySelectorAll("#buttons>div");
+    myButtons.forEach(
+      function (myElement)
+      {
+        myElement.classList.remove("on");
+        myElement.classList.remove("off");
+      }
+    );
+    document.getElementById("red").classList.add(myData.red ? "on" : "off");
+    document.getElementById("yellow").classList.add(myData.yellow ? "on" : "off");
+    document.getElementById("green").classList.add(myData.green ? "on" : "off");
+    document.getElementById("blue").classList.add(myData.blue ? "on" : "off");
   }
 }
 </script>
@@ -15,13 +28,12 @@ if (!!window.EventSource) {
 
 {% block main %}
 <div class="center block">
-    <h2>Score: <span id="myScore">0</span></h2>
-    <div id="data">nothing received yet</div>
+    <h2>Score: <span id="score">0</span></h2>
     <div id="buttons" class="wrapper">
-      <div id="LED_01" class="indicator square red"><h3 class="label">01</h3></div>
-      <div id="LED_02" class="indicator square green"><h3 class="label">02</h3></div>
-      <div id="LED_03" class="indicator square yellow"><h3 class="label">03</h3></div>
-      <div id="LED_04" class="indicator square blue"><h3 class="label">04</h3></div>
+      <div id="red" class="indicator square red"><h3 class="label">01</h3></div>
+      <div id="yellow" class="indicator square green"><h3 class="label">02</h3></div>
+      <div id="green" class="indicator square yellow"><h3 class="label">03</h3></div>
+      <div id="blue" class="indicator square blue"><h3 class="label">04</h3></div>
     </div>
 </div>
 {% endblock %}

@@ -2,7 +2,7 @@ from __future__ import division
 from flask import Flask, Response, render_template, request, redirect, send_from_directory, url_for, session, abort
 from flask_session import Session
 from enum import Enum
-from random import randrange, choice, gauss
+from random import randrange, choice
 from os import path
 import itertools
 import threading
@@ -17,24 +17,25 @@ app.debug = True
 # Generate streaming data and calculate statistics from it
 class MyStreamMonitor(object):
     def __init__(self):
-        self.sum   = 0
-        self.count = 0
+        self.state = {
+            'red':False,
+            'yellow':False,
+            'green':False,
+            'blue':False,
+            'score':-1
+        }
+    
     @property
-    def mu(self):
-        try:
-            outv = self.sum/self.count
-        except:
-            outv = 0
-        return outv
     def generate_values(self):
         while True:
-            time.sleep(.1)  # an artificial delay
-            yield gauss(0,1)
+            time.sleep(.5)  # an artificial delay
+            yield choice(['red','yellow','green','blue'])
     def monitor(self, report_interval=1):
         print('Starting data stream...')
-        for x in self.generate_values():
-            self.sum   += x
-            self.count += 1 
+        for x in self.generate_values:
+            self.state[x] = not self.state[x] 
+            if not self.state[x]:
+                self.state['score'] += 1 
 #endregion
 
 stream = MyStreamMonitor()
@@ -63,14 +64,25 @@ def route_index():
         case _:
             return redirect(url_for('route_index'), code=404)
 
+@app.route("/data-stream", methods=["GET"])
+def route_data():
+    if request.headers.get('accept') == 'text/event-stream':
+        def event_stream():
+            laststate = stream.state.copy()
+            while True:
+            #    yield f'data: {json.dumps(stream.state)}\n\n'
+                if laststate != stream.state:
+                    laststate = stream.state.copy()
+                    # yield f'{json.dumps(stream.state)}\n\n'
+                    yield f'data: {json.dumps(stream.state)}\n\n'
+                    # yield "here\n\nthere\n\n"
+                time.sleep(0.1)
+        return Response(event_stream(), content_type='text/event-stream')
+    # fail-through
+    return redirect(url_for('route_index'), code=404)
+
 @app.route("/monitor", methods=["GET"])
 def route_mon():
-    if request.headers.get('accept') == 'text/event-stream':
-        def events():
-            while True:
-                yield f'data: {stream.count:10d} - {stream.sum:0.03f}\n\n'
-                time.sleep(5) # artificial delay. would rather push whenever values are updated. 
-        return Response(events(), content_type='text/event-stream')
     return render_template('monitor.html')
     # return redirect(url_for('route_index'), code=404)
 
