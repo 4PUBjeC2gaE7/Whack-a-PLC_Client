@@ -49,7 +49,7 @@ def route_index():
     match request.method:
         case "POST":
             # parse join/new game
-            match request.form.get("mode"):
+            match request.form.get("access"):
                 case "monitor":
                     return redirect(url_for('route_mon'))
                 case "control":
@@ -68,7 +68,7 @@ def route_mon():
     if request.headers.get('accept') == 'text/event-stream':
         def events():
             while True:
-                yield f'data: {stream.count:10d} - {stream.sum:03d}\n\n'
+                yield f'data: {stream.count:10d} - {stream.sum:0.03f}\n\n'
                 time.sleep(5) # artificial delay. would rather push whenever values are updated. 
         return Response(events(), content_type='text/event-stream')
     return render_template('monitor.html')
