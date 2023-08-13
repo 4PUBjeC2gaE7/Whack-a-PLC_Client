@@ -33,9 +33,10 @@ class MyStreamMonitor(object):
     def monitor(self, report_interval=1):
         print('Starting data stream...')
         for x in self.generate_values:
-            self.state[x] = not self.state[x] 
-            if not self.state[x]:
-                self.state['score'] += 1 
+            if x != 'skip':
+                self.state[x] = not self.state[x] 
+                if not self.state[x]:
+                    self.state['score'] += 1 
 #endregion
 
 stream = MyStreamMonitor()
