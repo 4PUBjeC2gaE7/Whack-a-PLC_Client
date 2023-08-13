@@ -98,7 +98,6 @@ def route_adv():
 def route_favicon():
     return send_from_directory(path.join(app.root_path, 'static'), 'favicon.png', mimetype='image/png')
 
-
 if __name__ == "__main__":
     # Data monitor should start as soon as the app is started.
     t = threading.Thread(target=stream.monitor)

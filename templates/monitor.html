@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 
 {% block head %}
+<link rel="stylesheet" href="/static/LED.css" />
 <script src="http://code.jquery.com/jquery-latest.js"></script>
 <script>
 if (!!window.EventSource) {
@@ -16,5 +17,11 @@ if (!!window.EventSource) {
 <div class="center block">
     <h2>Score: <span id="myScore">0</span></h2>
     <div id="data">nothing received yet</div>
+    <div id="buttons" class="wrapper">
+      <div id="LED_01" class="indicator square red"><h3 class="label">01</h3></div>
+      <div id="LED_02" class="indicator square green"><h3 class="label">02</h3></div>
+      <div id="LED_03" class="indicator square yellow"><h3 class="label">03</h3></div>
+      <div id="LED_04" class="indicator square blue"><h3 class="label">04</h3></div>
+    </div>
 </div>
 {% endblock %}

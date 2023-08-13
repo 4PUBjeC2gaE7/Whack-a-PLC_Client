@@ -1,3 +1,8 @@
+.indicator {
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
 .indicator.red { background-image: url("LED.svg#led-round-red-off"); }
 .indicator.orange { background-image: url("LED.svg#led-round-orange-off"); }
 .indicator.yellow { background-image: url("LED.svg#led-round-yellow-off"); }

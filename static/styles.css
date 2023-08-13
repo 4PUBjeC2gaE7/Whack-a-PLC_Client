@@ -7,6 +7,7 @@
     --shadow: #182028;
     --text-main: #2c3135;
     --text-highlight: #dcf358;
+    --text-dark: #000c15;
 }
 
 #nav, .block {
@@ -125,4 +126,51 @@ label {
     cursor: pointer;
     font-size: 12pt;
     height: 4em;
+}
+
+@media screen {
+    /* Monitor buttons */
+    #buttons {
+        display: grid;
+        grid-template-areas:
+            "a b"
+            "c d";
+        column-gap: 5px;
+        row-gap: 5px;
+    }
+
+    #buttons div:hover>.label {
+        color: var(--text-dark);
+        text-shadow: var(--text-highlight) 0px 0px 1vh;
+    }
+
+    .label {
+        position: relative;
+        text-align: center;
+        text-shadow: 1px 1px 3px black, -1px -1px 3px black;
+    }
+
+    .indicator {
+        aspect-ratio: 1;
+    }
+
+    @media (min-aspect-ratio: 1/1) {
+        .indicator {
+            width: 30vh;
+        }
+        .label {
+            font-size: 2vh;
+            top: 13vh;
+        }
+    }
+    
+    @media (max-aspect-ratio: 1/1) {
+        .indicator {
+            width: 30vw;
+        }
+        .label {
+            font-size: 2vw;
+            top: 13vw;
+        }
+    }
 }
