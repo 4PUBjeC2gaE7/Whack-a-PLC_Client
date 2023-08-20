@@ -3,7 +3,7 @@
     --bg-alt: #4e5a67;
     --bg-light: #a1b9d2;
     --bg-dark: #282f36;
-    --border: #66666b;
+    --border: #0b0b18;
     --shadow: #182028;
     --text-main: #2c3135;
     --text-highlight: #dcf358;
@@ -14,8 +14,8 @@
     background-color: var(--bg-main);
     background-image: linear-gradient(
         var(--bg-dark) 0%,
-        var(--bg-main) 10%,
-        var(--bg-main) 95%,
+        var(--bg-main) 1%,
+        var(--bg-main) 99%,
         var(--bg-alt) 100%
     );
     background-repeat: no-repeat;
@@ -26,8 +26,9 @@
     top: 0px;
     left: 0px;
     width: 100%;
-    padding: 0.2em 1em;
-    border-bottom: 4px solid var(--border);
+    height: 100px;
+    border-bottom: 2px solid var(--border);
+    padding: 0px;
 }
 
 #nav p {
@@ -41,13 +42,18 @@
     margin-top: 0;
 }
 
+#logo {
+    height: 160px;
+    margin: 0;
+}
+
 .center {
     margin: auto;
 }
 
 .block {
     display: block;
-    border: 4px inset var(--border);
+    border: 2px inset var(--border);
     border-radius: 10px;
     width: 40%;
     min-width: fit-content;
