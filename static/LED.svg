@@ -130,6 +130,12 @@
                     <stop offset="1.00" style="stop-color:#6200a2; stop-opacity:0.00" />
                 </radialGradient>
                 <!-- #endregion -->
+                <radialGradient id="grad-led-pressed"
+                    cx="-1.2" cy="-1.7" r="11"
+                    gradientUnits="userSpaceOnUse" >
+                    <stop offset="0.45" style="stop-color:black; stop-opacity:0.55" />
+                    <stop offset="1.00" style="stop-color:black; stop-opacity:0.00" />
+                </radialGradient>
                 <!-- #endregion -->
                 <!-- #region Masks -->
                 <mask id="mask-bezel-round">
@@ -181,6 +187,8 @@
                 <rect id="led-square-highlight" style="fill:url(#grad-led-highlight);"
                     x="-10.5" y="-10.5" width="21" height="30" rx="3" />
                 <circle id="led-glow" cx="0.0" cy="0.0" r="20" />
+                <path id="pressed" style="fill:url(#grad-led-pressed);"
+                   d="M 0,-11 q 9,0,9,11 q 0,11,-9,11 q -9,0,-9,-11 q 0,-11,9,-11 " />
             </defs>
             <!-- #region Icon Set -->
             <!-- Round LEDs "OFF" -->
@@ -277,41 +285,120 @@
                 <use xlink:href="#led-square-base" style="fill:url(#grad-led_off-violet);" />
                 <use xlink:href="#led-square-highlight" />
             </g>
-            <!-- Square LEDs "ON" -->
+            <!-- Square LEDs "OFF, Pressed" -->
             <g transform="translate(20,140)">
+                <use xlink:href="#led-square-base" style="fill:url(#grad-led_off-red);" />
+                <use xlink:href="#led-square-highlight" />
+                <use xlink:href="#pressed" />
+            </g>
+            <g transform="translate(60,140)">
+                <use xlink:href="#led-square-base" style="fill:url(#grad-led_off-orange);" />
+                <use xlink:href="#led-square-highlight" />
+                <use xlink:href="#pressed" />
+            </g>
+            <g transform="translate(100,140)">
+                <use xlink:href="#led-square-base" style="fill:url(#grad-led_off-yellow);" />
+                <use xlink:href="#led-square-highlight" />
+                <use xlink:href="#pressed" />
+            </g>
+            <g transform="translate(140,140)">
+                <use xlink:href="#led-square-base" style="fill:url(#grad-led_off-green);" />
+                <use xlink:href="#led-square-highlight" />
+                <use xlink:href="#pressed" />
+            </g>
+            <g transform="translate(180,140)">
+                <use xlink:href="#led-square-base" style="fill:url(#grad-led_off-cyan);" />
+                <use xlink:href="#led-square-highlight" />
+                <use xlink:href="#pressed" />
+            </g>
+            <g transform="translate(220,140)">
+                <use xlink:href="#led-square-base" style="fill:url(#grad-led_off-blue);" />
+                <use xlink:href="#led-square-highlight" />
+                <use xlink:href="#pressed" />
+            </g>
+            <g transform="translate(260,140)">
+                <use xlink:href="#led-square-base" style="fill:url(#grad-led_off-violet);" />
+                <use xlink:href="#led-square-highlight" />
+                <use xlink:href="#pressed" />
+            </g>
+            <!-- Square LEDs "ON" -->
+            <g transform="translate(20,180)">
                 <use xlink:href="#led-square-base" style="fill:url(#grad-led_off-red);" />
                 <use xlink:href="#led-glow" style="fill:url(#grad-led_on-red);" />
                 <use xlink:href="#led-square-highlight" />
             </g>
-            <g transform="translate(60,140)">
+            <g transform="translate(60,180)">
                 <use xlink:href="#led-square-base" style="fill:url(#grad-led_off-orange);" />
                 <use xlink:href="#led-glow" style="fill:url(#grad-led_on-orange);" />
                 <use xlink:href="#led-square-highlight" />
             </g>
-            <g transform="translate(100,140)">
+            <g transform="translate(100,180)">
                 <use xlink:href="#led-square-base" style="fill:url(#grad-led_off-yellow);" />
                 <use xlink:href="#led-glow" style="fill:url(#grad-led_on-yellow);" />
                 <use xlink:href="#led-square-highlight" />
             </g>
-            <g transform="translate(140,140)">
+            <g transform="translate(140,180)">
                 <use xlink:href="#led-square-base" style="fill:url(#grad-led_off-green);" />
                 <use xlink:href="#led-glow" style="fill:url(#grad-led_on-green);" />
                 <use xlink:href="#led-square-highlight" />
             </g>
-            <g transform="translate(180,140)">
+            <g transform="translate(180,180)">
                 <use xlink:href="#led-square-base" style="fill:url(#grad-led_off-cyan);" />
                 <use xlink:href="#led-glow" style="fill:url(#grad-led_on-cyan);" />
                 <use xlink:href="#led-square-highlight" />
             </g>
-            <g transform="translate(220,140)">
+            <g transform="translate(220,180)">
                 <use xlink:href="#led-square-base" style="fill:url(#grad-led_off-blue);" />
                 <use xlink:href="#led-glow" style="fill:url(#grad-led_on-blue);" />
                 <use xlink:href="#led-square-highlight" />
             </g>
-            <g transform="translate(260,140)">
+            <g transform="translate(260,180)">
                 <use xlink:href="#led-square-base" style="fill:url(#grad-led_off-violet);" />
                 <use xlink:href="#led-glow" style="fill:url(#grad-led_on-violet);" />
                 <use xlink:href="#led-square-highlight" />
+            </g>
+            <!-- Square LEDs "ON, Pressed" -->
+            <g transform="translate(20,220)">
+                <use xlink:href="#led-square-base" style="fill:url(#grad-led_off-red);" />
+                <use xlink:href="#led-glow" style="fill:url(#grad-led_on-red);" />
+                <use xlink:href="#led-square-highlight" />
+                <use xlink:href="#pressed" />
+            </g>
+            <g transform="translate(60,220)">
+                <use xlink:href="#led-square-base" style="fill:url(#grad-led_off-orange);" />
+                <use xlink:href="#led-glow" style="fill:url(#grad-led_on-orange);" />
+                <use xlink:href="#led-square-highlight" />
+                <use xlink:href="#pressed" />
+            </g>
+            <g transform="translate(100,220)">
+                <use xlink:href="#led-square-base" style="fill:url(#grad-led_off-yellow);" />
+                <use xlink:href="#led-glow" style="fill:url(#grad-led_on-yellow);" />
+                <use xlink:href="#led-square-highlight" />
+                <use xlink:href="#pressed" />
+            </g>
+            <g transform="translate(140,220)">
+                <use xlink:href="#led-square-base" style="fill:url(#grad-led_off-green);" />
+                <use xlink:href="#led-glow" style="fill:url(#grad-led_on-green);" />
+                <use xlink:href="#led-square-highlight" />
+                <use xlink:href="#pressed" />
+            </g>
+            <g transform="translate(180,220)">
+                <use xlink:href="#led-square-base" style="fill:url(#grad-led_off-cyan);" />
+                <use xlink:href="#led-glow" style="fill:url(#grad-led_on-cyan);" />
+                <use xlink:href="#led-square-highlight" />
+                <use xlink:href="#pressed" />
+            </g>
+            <g transform="translate(220,220)">
+                <use xlink:href="#led-square-base" style="fill:url(#grad-led_off-blue);" />
+                <use xlink:href="#led-glow" style="fill:url(#grad-led_on-blue);" />
+                <use xlink:href="#led-square-highlight" />
+                <use xlink:href="#pressed" />
+            </g>
+            <g transform="translate(260,220)">
+                <use xlink:href="#led-square-base" style="fill:url(#grad-led_off-violet);" />
+                <use xlink:href="#led-glow" style="fill:url(#grad-led_on-violet);" />
+                <use xlink:href="#led-square-highlight" />
+                <use xlink:href="#pressed" />
             </g>
             <!-- #endregion -->
             <!-- #region views-->
@@ -347,5 +434,13 @@
             <view id="led-square-cyan-on" viewBox="160 120 40 40" />
             <view id="led-square-blue-on" viewBox="200 120 40 40" />
             <view id="led-square-violet-on" viewBox="240 120 40 40" />
+            <!-- Square LEDs (ON-pressed) -->
+            <view id="led-square-red-on-pressed" viewBox="0 160 40 40" />
+            <view id="led-square-orange-on-pressed" viewBox="40 160 40 40" />
+            <view id="led-square-yellow-on-pressed" viewBox="80 160 40 40" />
+            <view id="led-square-green-on-pressed" viewBox="120 160 40 40" />
+            <view id="led-square-cyan-on-pressed" viewBox="160 160 40 40" />
+            <view id="led-square-blue-on-pressed" viewBox="200 160 40 40" />
+            <view id="led-square-violet-on-pressed" viewBox="240 160 40 40" />
             <!-- #endregion -->
 </svg>
